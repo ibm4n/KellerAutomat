@@ -122,6 +122,8 @@ public class Automaton {
 
 
     public static void main(String[] args) throws IOException {
+        System.out.println("Automata is ready for input.");
+        System.out.println("Please provide input:");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Automaton automaton = new Automaton();
         boolean running = true;
