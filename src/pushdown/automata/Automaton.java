@@ -11,7 +11,7 @@ public class Automaton {
 
     private PushDown stack = new PushDown();
     private String result = null;
-    public final static char EPSILON = 'e';
+    public static final char EPSILON = 'e';
     State currentState = State.q0;
 
 
@@ -32,26 +32,18 @@ public class Automaton {
             i++;
 
             switch (currentState) {
-                case q0:
-                    stateQ0Handler(inputSymbol);
-                    break;
-                case q1:
-                    stateQ1Handler(inputSymbol);
-                    break;
-                case q2:
-                    stateQ2Handler(inputSymbol);
-                    break;
-                case q3:
-                    automataFinished = true;
-                    break;
-                case failed:
+                case q0 -> stateQ0Handler(inputSymbol);
+                case q1 -> stateQ1Handler(inputSymbol);
+                case q2 -> stateQ2Handler(inputSymbol);
+                case q3 -> automataFinished = true;
+                case failed -> {
                     result = "Böööp";
                     automataFinished = true;
-                    break;
-                default:
+                }
+                default -> {
                     automataFinished = true;
                     err.println("supposedly unreachable State");
-                    break;
+                }
             }
         }
         return result;
@@ -109,21 +101,20 @@ public class Automaton {
         int firstNumber = Integer.parseInt(firstString);
         int secondNumber = Integer.parseInt(secondString);
 
-        int result = 0;
+        int calculationResult = 0;
 
         if(inputSymbol == '+'){
-            result = firstNumber + secondNumber;
+            calculationResult = firstNumber + secondNumber;
         }
         if(inputSymbol == '*'){
-            result = firstNumber * secondNumber;
+            calculationResult = firstNumber * secondNumber;
         }
-        return result;
+        return calculationResult;
     }
 
 
     public static void main(String[] args) throws IOException {
-        System.out.println("Automata is ready for input.");
-        System.out.println("Please provide input:");
+        printWelcomeMessage();
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Automaton automaton = new Automaton();
         boolean running = true;
@@ -137,6 +128,11 @@ public class Automaton {
                 automaton.stack = new PushDown();
             }
         }
+    }
+
+    private static void printWelcomeMessage() {
+        System.out.println("Automata is ready for input.");
+        System.out.println("Please provide input:");
     }
 
     enum State {

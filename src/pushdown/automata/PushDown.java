@@ -3,7 +3,7 @@ package pushdown.automata;
 public class PushDown {
 
     private PushDownItem currentItem;
-    private final static String EMPTY_STACK = "$";
+    private static final String EMPTY_STACK = "$";
 
     public PushDown() {
         this.currentItem = new PushDownItem(EMPTY_STACK, null);
@@ -11,8 +11,7 @@ public class PushDown {
 
 
     public void push(String value) {
-        var newCurrentItem = new PushDownItem(value, currentItem);
-        currentItem = newCurrentItem;
+        currentItem = new PushDownItem(value, currentItem);
     }
 
     public void push(int value){

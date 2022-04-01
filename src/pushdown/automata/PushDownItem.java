@@ -2,8 +2,8 @@ package pushdown.automata;
 
 public class PushDownItem {
 
-    private String value;
-    private PushDownItem nextItem;
+    private final String value;
+    private final PushDownItem nextItem;
 
 
     public PushDownItem(String value, PushDownItem item) {

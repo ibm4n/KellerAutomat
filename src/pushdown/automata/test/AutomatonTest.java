@@ -9,16 +9,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AutomatonTest {
 
     private Automaton automaton;
-    private final static String TEST_A = "34+62+89+43+***";
-    private final static String TEST_B = "31+78+987+1214++7++++++";
-    private final static String TEST_C1 = "34+*";
-    private final static String TEST_C2 = "8+9+7*2*";
+    private static final String TEST_A = "34+62+89+43+***";
+    private static final String TEST_B = "31+78+987+1214++7++++++";
+    private static final String TEST_C1 = "34+*";
+    private static final String TEST_C2 = "8+9+7*2*";
 
     @BeforeEach
     void setup() {
         this.automaton = new Automaton();
     }
-
 
     @Test
     public void testA() {
@@ -43,6 +42,5 @@ public class AutomatonTest {
         String result = automaton.runAutomate(TEST_C2);
         assertEquals("Böööp", result);
     }
-
 
 }
