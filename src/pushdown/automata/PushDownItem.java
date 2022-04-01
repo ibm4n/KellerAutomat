@@ -1,10 +1,12 @@
+package pushdown.automata;
+
 public class PushDownItem {
 
-    private char value;
+    private String value;
     private PushDownItem nextItem;
 
 
-    public PushDownItem(char value, PushDownItem item) {
+    public PushDownItem(String value, PushDownItem item) {
         this.value = value;
         this.nextItem = item;
 
@@ -15,7 +17,7 @@ public class PushDownItem {
     }
 
 
-    public char getValue() {
+    public String getValue() {
         return value;
     }
 

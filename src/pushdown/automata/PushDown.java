@@ -1,23 +1,34 @@
+package pushdown.automata;
+
 public class PushDown {
 
     private PushDownItem currentItem;
-    private final static char EMPTY_STACK = '$';
+    private final static String EMPTY_STACK = "$";
 
     public PushDown() {
         this.currentItem = new PushDownItem(EMPTY_STACK, null);
     }
 
 
-    public void push(char value) {
+    public void push(String value) {
         var newCurrentItem = new PushDownItem(value, currentItem);
         currentItem = newCurrentItem;
     }
 
+    public void push(int value){
+        push(String.valueOf(value));
+    }
 
-    public char popAndReturn() {
-        char returnitem = currentItem.getValue();
-        this.pop();
-        return returnitem;
+
+    public String popAndReturn() {
+        String returnItem;
+        try {
+            returnItem = currentItem.getValue();
+            this.pop();
+        } catch (NullPointerException e) {
+            returnItem = "$";
+        }
+        return returnItem;
     }
 
 
